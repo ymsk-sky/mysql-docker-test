@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+ db:
+  container_name: mysql-refairty-docker-test
+  build:
+   context: .
+   dockerfile: docker/db/Dockerfile
+  hostname: db
+  volumes:
+   - ./db:/var/lib/mysql
+   - ./migrations:/migrations
+  ports:
+   - "3306:3306"
+  environment:
+   MYSQL_ROOT_PASSWORD: root
+   MYSQL_USER: test
+   MYSQL_PASSWORD: test
